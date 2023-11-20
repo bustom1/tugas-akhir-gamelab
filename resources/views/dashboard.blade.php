@@ -9,7 +9,7 @@
                     <div class="col-4">
                         <div class="card text-center " style="width: 18rem;">
                             <div class="card-body">
-                                <h5 class="card-title">Jurusan</h5>
+                                <h5 class="card-title nav-icon fa fa-graduation-cap">  Jurusan </h5>
                                 <p class="card-text">Total Jurusan : {{ $totalJurusan }}</p>
                             </div>
                         </div>
@@ -17,7 +17,7 @@
                     <div class="col-4">
                         <div class="card text-center " style="width: 18rem;">
                             <div class="card-body">
-                                <h5 class="card-title">Mata Pelajaran</h5>
+                                <h5 class="card-title nav-icon fa fa-book">  Mata Pelajaran</h5>
                                 <p class="card-text">Total Mata Pelajaran : {{ $totalMataPelajaran }}</p>
                             </div>
                         </div>
