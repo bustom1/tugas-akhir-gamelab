@@ -32,13 +32,13 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{route('jurusan.index')}}" class="nav-link">
-                        <i class="nav-icon"></i>
+                        <i class="nav-icon fa fa-graduation-cap"></i>
                         <p>Jurusan</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{route('mata-pelajaran.index')}}" class="nav-link">
-                        <i class="nav-icon"></i>
+                        <i class="nav-icon fa fa-book"></i>
                         <p>Mata Pelajaran</p>
                     </a>
 

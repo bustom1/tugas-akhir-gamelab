@@ -16,9 +16,12 @@
                 </tr>
             </thead>
             <tbody>
+                @php
+                    $counter = 1;
+                @endphp
                 @foreach($mata_pelajarans as $mata_pelajaran)
                     <tr>
-                        <td>{{ $mata_pelajaran->id }}</td>
+                        <td>{{ $counter++ }}</td>
                         <td>{{ $mata_pelajaran->nama }}</td>
                         <td>{{ $mata_pelajaran->deskripsi }}</td>
                         <td>{{ $mata_pelajaran->jurusan->nama }}</td>

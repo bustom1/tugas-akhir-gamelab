@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Jurusan;
+use App\MataPelajaran;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -23,6 +25,14 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $jurusans = Jurusan::all();
+        $mataPelajaran = MataPelajaran::all();
+
+        return view('dashboard', [
+            'mataPelajaran' => $mataPelajaran,
+            'jurusans' => $jurusans,
+            'totalJurusan' => $jurusans->count(),  // Menghitung total jurusan
+            'totalMataPelajaran' => $mataPelajaran->count(),  // Menghitung total mata pelajaran
+        ]);
     }
 }

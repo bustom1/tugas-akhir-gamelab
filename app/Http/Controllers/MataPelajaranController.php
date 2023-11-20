@@ -27,7 +27,7 @@ class MataPelajaranController extends Controller
     public function create()
     {
         $jurusans = Jurusan::all();
-        return view('mata_pelajaran.create', ['jurusans' => $jurusans]);
+        return view('mataPelajaran.create', ['jurusans' => $jurusans]);
     }
 
     /**
@@ -50,7 +50,7 @@ class MataPelajaranController extends Controller
             'deskripsi' => $request->deskripsi,
         ]);
 
-        return redirect()->route('index-mata-pelajaran')->with('success', 'Mata Pelajaran berhasil ditambahkan!');
+        return redirect()->route('mata-pelajaran.index')->with('success', 'Mata Pelajaran berhasil ditambahkan!');
     }
 
     /**
@@ -70,11 +70,12 @@ class MataPelajaranController extends Controller
      * @param  \App\MataPelajaran  $mataPelajaran
      * @return \Illuminate\Http\Response
      */
-    public function edit(MataPelajaran $mataPelajaran)
+    public function edit(MataPelajaran $id)
     {
-        $mata_pelajaran = MataPelajaran::findOrFail($mataPelajaran);
+        $mata_pelajaran = MataPelajaran::findOrFail($id);
         $jurusans = Jurusan::all();
-        return view('mata_pelajaran.edit', ['mata_pelajaran' => $mata_pelajaran, 'jurusans' => $jurusans]);
+        // return $mata_pelajaran;
+        return view('mataPelajaran.edit', ['mata_pelajaran' => $mata_pelajaran, 'jurusans' => $jurusans]);
     }
 
     /**
@@ -84,19 +85,19 @@ class MataPelajaranController extends Controller
      * @param  \App\MataPelajaran  $mataPelajaran
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, MataPelajaran $mataPelajaran)
+    public function update(Request $request, $id)
     {
-        $mata_pelajaran = MataPelajaran::findOrFail($mataPelajaran);
+        $mata_pelajaran = MataPelajaran::findOrFail($id);
 
-    // Validasi data di sini
+        // Validasi data di sini
 
-    $mata_pelajaran->update([
-        'id_jurusan' => $request->id_jurusan,
-        'nama' => $request->nama,
-        'deskripsi' => $request->deskripsi,
-    ]);
+        $mata_pelajaran->update([
+            'id_jurusan' => $request->id_jurusan,
+            'nama' => $request->nama,
+            'deskripsi' => $request->deskripsi,
+        ]);
 
-    return redirect()->route('mata-pelajaran.index')->with('success', 'Mata Pelajaran berhasil diperbarui!');
+        return redirect()->route('mata-pelajaran.index')->with('success', 'Mata Pelajaran berhasil diperbarui!');
     }
 
     /**
@@ -105,11 +106,11 @@ class MataPelajaranController extends Controller
      * @param  \App\MataPelajaran  $mataPelajaran
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MataPelajaran $mataPelajaran)
+    public function destroy(MataPelajaran $id)
     {
-        $mata_pelajaran = MataPelajaran::findOrFail($mataPelajaran);
-        $mata_pelajaran->delete();
-    
+        $mata_pelajaran = MataPelajaran::findOrFail($id);
+        $mata_pelajaran[0]->delete();
+
         return redirect()->route('mata-pelajaran.index')->with('success', 'Mata Pelajaran berhasil dihapus!');
     }
 }

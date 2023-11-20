@@ -9,16 +9,19 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>No</th>
                     <th>Nama Jurusan</th>
                     <th>Deskripsi</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
+                @php
+                $counter = 1;    
+                @endphp
                 @foreach ($jurusans as $jurusan)
                     <tr>
-                        <td>{{ $jurusan->id }}</td>
+                        <td>{{ $counter++ }}</td>
                         <td>{{ $jurusan->nama }}</td>
                         <td>{{ $jurusan->deskripsi }}</td>
                         <td>

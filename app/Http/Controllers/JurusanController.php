@@ -46,7 +46,7 @@ class JurusanController extends Controller
             'deskripsi' => $request->deskripsi,
         ]);
 
-        return redirect()->route('index-jurusan')->with('success', 'Jurusan berhasil ditambahkan!');
+        return redirect()->route('jurusan.index')->with('success', 'Jurusan berhasil ditambahkan!');
     }
 
     /**
@@ -66,9 +66,10 @@ class JurusanController extends Controller
      * @param  \App\jurusan  $jurusan
      * @return \Illuminate\Http\Response
      */
-    public function edit(jurusan $jurusan)
+    public function edit(jurusan $id)
     {
-        $jurusan = Jurusan::findOrFail($jurusan);
+        $jurusan = Jurusan::findOrFail($id);
+        // return $jurusan;
         return view('jurusan.edit', ['jurusan' => $jurusan]);
     }
 
@@ -79,18 +80,23 @@ class JurusanController extends Controller
      * @param  \App\jurusan  $jurusan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, jurusan $jurusan)
+    public function update(Request $request, $id)
     {
-        $jurusan = Jurusan::findOrFail($jurusan);
+        $jurusan = Jurusan::findOrFail($id);
 
-    // Validasi data di sini
+        // Validasi data
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'deskripsi' => 'required|string',
+        ]);
 
-    $jurusan->update([
-        'nama' => $request->nama,
-        'deskripsi' => $request->deskripsi,
-    ]);
+        $jurusan->update([
+            'nama' => $request->nama,
+            'deskripsi' => $request->deskripsi,
+        ]);
 
-    return redirect()->route('jurusan.index')->with('success', 'Jurusan berhasil diperbarui!');
+        // return $jurusan;
+        return redirect()->route('jurusan.index')->with('success', 'Jurusan berhasil diperbarui!');
     }
 
     /**
@@ -99,11 +105,12 @@ class JurusanController extends Controller
      * @param  \App\jurusan  $jurusan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(jurusan $jurusan)
+    public function destroy(jurusan $id)
     {
-        $jurusan = Jurusan::findOrFail($jurusan);
-        $jurusan->delete();
-    
+        $jurusan = Jurusan::findOrFail($id);
+        // return $jurusan[0];
+        $jurusan[0]->delete();
+
         return redirect()->route('jurusan.index')->with('success', 'Jurusan berhasil dihapus!');
     }
 }
