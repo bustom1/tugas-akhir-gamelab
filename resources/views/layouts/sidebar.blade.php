@@ -31,6 +31,19 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('jurusan.index')}}" class="nav-link">
+                        <i class="nav-icon"></i>
+                        <p>Jurusan</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('mata-pelajaran.index')}}" class="nav-link">
+                        <i class="nav-icon"></i>
+                        <p>Mata Pelajaran</p>
+                    </a>
+
+                </li>
+                <li class="nav-item">
                     <form id="logout-form" action="{{route('logout')}}" method="post">
                         @csrf
                     </form>
