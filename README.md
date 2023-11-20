@@ -1,4 +1,4 @@
-# Laravel AdminLTE
+# Laravel AdminLTE Tugas Akhir Gamelab Studi Independent
 
 This is a ready to use AdminLTE template for Laravel 5.8
 
